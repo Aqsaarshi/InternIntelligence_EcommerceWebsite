@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+/* ---------- Light Mode Defaults ---------- */
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans, sans-serif);
+  --font-mono: var(--font-geist-mono, monospace);
+}
+
+/* ---------- Dark Mode Override ---------- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+/* ---------- Body Global Styles ---------- */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+/* ---------- Pulse Glow Animation ---------- */
+@keyframes pulseGlow {
+  0%,
+  100% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #f9a8d4; /* Light pink glow */
+  }
+}
+
+.pulse-glow {
+  animation: pulseGlow 2.5s ease-in-out infinite;
+}
+@keyframes gradientBackground {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 300% 300%;
+  animation: gradientBackground 8s ease infinite;
+}
