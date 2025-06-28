@@ -7,21 +7,21 @@ type Product = {
 };
 
 type Props = {
-  products: Product[];
+  products?: Product[]; // optional banaya
 };
 
-export default function CollageGrid({ products }: Props) {
+export default function CollageGrid({ products = [] }: Props) {
   const topProducts = products.slice(0, 5); // top 5
   const remainingProducts = products.slice(5); // rest
 
   return (
-    <section className="py-14 bg-gradient-to-br from-pink-50 to-purple-50 ">
+    <section className="py-14 bg-gradient-to-br from-pink-50 to-purple-50">
       <h2 className="text-4xl font-bold text-center text-pink-700 mb-10 tracking-wide">
         ✨ Product Collage ✨
       </h2>
 
       {/* Top Grid (5 items) */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 px-6 max-w-7xl mx-auto mb-12 ">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 px-6 max-w-7xl mx-auto mb-12">
         {topProducts.map((product) => (
           <div
             key={product.id}
@@ -37,7 +37,7 @@ export default function CollageGrid({ products }: Props) {
         ))}
       </div>
 
-      {/* Bottom Centered Products (styled) */}
+      {/* Bottom Centered Products */}
       {remainingProducts.length > 0 && (
         <div className="flex justify-center flex-wrap gap-6 px-4">
           {remainingProducts.map((product) => (
