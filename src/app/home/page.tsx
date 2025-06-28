@@ -8,7 +8,7 @@ import CollageGrid from "../components/CollageGrid/page";
 import AnimatedImage from "../components/AnimatedImage/page";
 import CommentsComponent from "../components/Comments/page";
 import Footer from "../components/Footer/page";
-// @ts-ignore
+// @ts-expect-error
 import TypeWriterEffect from "react-typewriter-effect";
 
 type Product = {

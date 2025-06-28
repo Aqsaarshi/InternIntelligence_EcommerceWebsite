@@ -19,7 +19,7 @@ export default function HelpPage() {
             </h2>
             <ul className="list-disc list-inside text-gray-700 space-y-2">
               <li>
-                <strong>How can I track my order?</strong> — You’ll receive an
+                <strong>How can I track my order?</strong> — You'll receive an
                 email with tracking details once your order is shipped.
               </li>
               <li>
@@ -28,7 +28,7 @@ export default function HelpPage() {
               </li>
               <li>
                 <strong>What if I receive a damaged item?</strong> — Contact us
-                immediately and we’ll replace it free of charge.
+                immediately and we'll replace it free of charge.
               </li>
             </ul>
           </section>
@@ -51,7 +51,7 @@ export default function HelpPage() {
                 </a>
               </li>
               <li>📱 Phone: +92 300 1234567</li>
-              <li>🕒 Support Hours: Mon–Sat, 9 AM – 6 PM</li>
+              <li>🕒 Support Hours: Mon-Sat, 9 AM - 6 PM</li>
             </ul>
           </section>
         </div>

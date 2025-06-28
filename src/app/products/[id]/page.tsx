@@ -44,7 +44,7 @@ export default function ProductPage({ params }: Props) {
   const handleAddToCart = () => {
     if (!product) return;
 
-    let existingWishlist: Product[] = JSON.parse(
+    const existingWishlist: Product[] = JSON.parse(
       localStorage.getItem("wishlist") || "[]"
     );
 
