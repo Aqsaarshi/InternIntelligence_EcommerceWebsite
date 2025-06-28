@@ -10,12 +10,12 @@ type Product = {
 };
 
 type Props = {
-  products: Product[];
+  products?: Product[]; // optional
 };
 
-export default function DiscountProducts({ products }: Props) {
+export default function DiscountProducts({ products = [] }: Props) {
   return (
-    <section className="py-12 bg-gray-50 ">
+    <section className="py-12 bg-gray-50">
       <h2 className="text-3xl font-bold text-center text-red-600 mb-10">
         Discounted Products
       </h2>
