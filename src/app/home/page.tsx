@@ -8,8 +8,6 @@ import CollageGrid from "../components/CollageGrid/page";
 import AnimatedImage from "../components/AnimatedImage/page";
 import CommentsComponent from "../components/Comments/page";
 import Footer from "../components/Footer/page";
-// @ts-expect-error
-import TypeWriterEffect from "react-typewriter-effect";
 
 type Product = {
   id: number;
@@ -38,15 +36,9 @@ export default function HomePage() {
           <h1 className="text-4xl font-bold text-gray-800 mb-4">
             Welcome to MyShop 🛒
           </h1>
-          <div className="text-lg text-gray-600">
-            <TypeWriterEffect
-              textStyle={{ fontSize: "1.125rem", color: "#4B5563" }}
-              startDelay={100}
-              cursorColor="#4B5563"
-              text="Explore our exclusive collection of stylish products!"
-              typeSpeed={50}
-            />
-          </div>
+          <p className="text-lg text-gray-600">
+            Explore our exclusive collection of stylish products!
+          </p>
         </div>
       </main>
 
@@ -79,20 +71,25 @@ export default function HomePage() {
             ))
           )}
         </div>
+
         <DiscountProducts
           products={products
-            .filter((p) => p.price > 50) // example discount filter
+            .filter((p) => p.price > 50)
             .map((p) => ({
               ...p,
               discountPrice: p.price * 0.8,
             }))}
         />
+
         {products.length > 0 && <CollageGrid products={products} />}
+
         <AnimatedImage
           src="https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg"
           alt="Luxury Jewellery"
         />
-        <CommentsComponent className="bg-black" /> <Footer />
+
+        <CommentsComponent className="bg-black" />
+        <Footer />
       </section>
     </div>
   );
