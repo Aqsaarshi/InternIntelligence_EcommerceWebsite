@@ -13,14 +13,14 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-gradient-to-r from-indigo-300 via-purple-300 to-pink-300 text-gray-800 py-12 px-4 sm:px-6 lg:px-8">
+    <footer className="bg-gradient-to-r from-black via-blue-900 to-purple-900 text-blue-200 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-center gap-12">
         {/* Brand Section */}
         <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
-          <div className="text-3xl font-extrabold tracking-widest select-none cursor-default">
-            Aqsora<span className="text-pink-500">.</span>
+          <div className="text-3xl font-extrabold tracking-widest select-none cursor-default text-purple-300">
+            Aqseluxe<span className="text-blue-400">.</span>
           </div>
-          <p className="mt-2 text-pink-600 font-light italic text-sm max-w-xs">
+          <p className="mt-2 text-blue-400 font-light italic text-sm max-w-xs">
             Where every detail speaks elegance
           </p>
         </div>
@@ -31,10 +31,10 @@ export default function Footer() {
             <a
               key={item}
               href={`/${item.toLowerCase()}`}
-              className="relative group text-gray-700 hover:text-pink-600 transition-colors"
+              className="relative group text-blue-200 hover:text-purple-400 transition"
             >
               {item}
-              <span className="absolute left-0 -bottom-1 w-full h-0.5 bg-pink-400 scale-x-0 group-hover:scale-x-100 transition-transform origin-left rounded"></span>
+              <span className="absolute left-0 -bottom-1 w-full h-0.5 bg-purple-400 scale-x-0 group-hover:scale-x-100 transition-transform origin-left rounded"></span>
             </a>
           ))}
         </nav>
@@ -53,17 +53,17 @@ export default function Footer() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="flex-grow rounded px-4 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-pink-400"
+                className="flex-grow rounded px-4 py-2 bg-gray-900 text-blue-200 placeholder-blue-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
               />
               <button
                 type="submit"
-                className="bg-pink-400 text-white rounded px-5 py-2 font-semibold hover:bg-pink-500 transition"
+                className="bg-purple-700 text-white rounded px-5 py-2 font-semibold hover:bg-purple-600 transition"
               >
                 Subscribe
               </button>
             </form>
           ) : (
-            <p className="text-pink-600 italic font-semibold mt-2">
+            <p className="text-purple-400 italic font-semibold mt-2">
               Thanks for subscribing!
             </p>
           )}
@@ -71,7 +71,7 @@ export default function Footer() {
       </div>
 
       {/* Social Icons */}
-      <div className="mt-10 flex justify-center gap-8 text-2xl text-pink-400">
+      <div className="mt-10 flex justify-center gap-8 text-2xl text-purple-400">
         {[
           {
             href: "https://facebook.com",
@@ -99,7 +99,7 @@ export default function Footer() {
             rel="noopener noreferrer"
             aria-label={label}
             title={label}
-            className="relative group rounded-full p-2 hover:bg-pink-300 hover:text-white transition-shadow shadow-md"
+            className="relative group rounded-full p-2 hover:bg-purple-400 hover:text-white transition-shadow shadow-md"
           >
             <svg
               fill="currentColor"
@@ -109,7 +109,7 @@ export default function Footer() {
             >
               <path d={svgPath} />
             </svg>
-            <span className="absolute -top-6 left-1/2 transform -translate-x-1/2 rounded bg-pink-400 px-2 py-1 text-xs opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none select-none">
+            <span className="absolute -top-6 left-1/2 transform -translate-x-1/2 rounded bg-purple-700 px-2 py-1 text-xs opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none select-none">
               {label}
             </span>
           </a>
@@ -117,8 +117,8 @@ export default function Footer() {
       </div>
 
       {/* Copyright */}
-      <p className="mt-10 text-center text-pink-600 text-sm select-none">
-        &copy; {new Date().getFullYear()} Aqsora. All rights reserved.
+      <p className="mt-10 text-center text-purple-500 text-sm select-none">
+        &copy; {new Date().getFullYear()} Aqseluxe. All rights reserved.
       </p>
     </footer>
   );

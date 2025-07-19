@@ -21,27 +21,23 @@ export default function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
-    // For demo, just show success message
     setStatus("Thank you for contacting us! We will get back to you soon.");
     setFormData({ name: "", email: "", message: "" });
-
-    // Yahan API call kar sakte ho form data bhejne ke liye
   };
 
   return (
-    <>
+    <div className="min-h-screen bg-black text-white">
       <Navbar />
-      <div className="max-w-3xl mx-auto p-8 rounded-2xl shadow-xl mt-20 animate-gradient bg-gradient-to-br from-pink-100 via-indigo-50 to-blue-100">
-        <h1 className="text-4xl font-extrabold text-indigo-800 mb-10 text-center tracking-tight">
-          Contact Us
+      <div className="max-w-3xl mx-auto mt-20 p-8 rounded-2xl shadow-2xl bg-gradient-to-br from-black via-indigo-950 to-purple-950">
+        <h1 className="text-4xl font-extrabold text-purple-300 mb-10 text-center tracking-tight">
+          Get in Touch 💌
         </h1>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <label
               htmlFor="name"
-              className="block text-indigo-700 font-medium mb-1"
+              className="block text-purple-400 mb-2 font-medium"
             >
               Full Name
             </label>
@@ -53,14 +49,14 @@ export default function ContactPage() {
               onChange={handleChange}
               required
               placeholder="Aqsa Arshi"
-              className="w-full border border-indigo-200 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-400 bg-white shadow-sm"
+              className="w-full px-4 py-3 rounded-xl bg-black border border-purple-800 placeholder-purple-600 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 shadow-inner"
             />
           </div>
 
           <div>
             <label
               htmlFor="email"
-              className="block text-indigo-700 font-medium mb-1"
+              className="block text-purple-400 mb-2 font-medium"
             >
               Email Address
             </label>
@@ -72,14 +68,14 @@ export default function ContactPage() {
               onChange={handleChange}
               required
               placeholder="aqsa@example.com"
-              className="w-full border border-indigo-200 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-400 bg-white shadow-sm"
+              className="w-full px-4 py-3 rounded-xl bg-black border border-purple-800 placeholder-purple-600 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 shadow-inner"
             />
           </div>
 
           <div>
             <label
               htmlFor="message"
-              className="block text-indigo-700 font-medium mb-1"
+              className="block text-purple-400 mb-2 font-medium"
             >
               Message
             </label>
@@ -91,25 +87,25 @@ export default function ContactPage() {
               onChange={handleChange}
               required
               placeholder="Write your message here..."
-              className="w-full border border-indigo-200 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-400 bg-white shadow-sm resize-none"
-            ></textarea>
+              className="w-full px-4 py-3 rounded-xl bg-black border border-purple-800 placeholder-purple-600 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 shadow-inner resize-none"
+            />
           </div>
 
           <button
             type="submit"
-            className="w-full bg-gradient-to-r from-indigo-500 via-pink-500 to-purple-500 text-white font-semibold py-3 rounded-xl shadow-md hover:brightness-110 transition"
+            className="w-full py-3 rounded-xl font-semibold bg-gradient-to-r from-indigo-700 via-blue-800 to-purple-700 hover:brightness-110 transition text-white shadow-md"
           >
             Send Message
           </button>
         </form>
 
         {status && (
-          <p className="mt-6 text-green-600 font-semibold text-center">
+          <p className="mt-6 text-green-400 text-center font-semibold">
             {status}
           </p>
         )}
       </div>
       <Footer />
-    </>
+    </div>
   );
 }

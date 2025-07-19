@@ -28,42 +28,73 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div>
+    <div className="bg-black text-blue-200">
       <Navbar />
 
-      <main className="flex items-center justify-center min-h-[60vh] bg-gradient-to-r from-indigo-50 to-pink-100 text-center">
-        <div>
-          <h1 className="text-4xl font-bold text-gray-800 mb-4">
-            Welcome to MyShop 🛒
-          </h1>
-          <p className="text-lg text-gray-600">
-            Explore our exclusive collection of stylish products!
-          </p>
+      <main className="flex items-center justify-center min-h-[80vh] bg-gradient-to-br from-black via-blue-950 to-purple-950 text-center px-4 relative overflow-hidden">
+        {/* Inline CSS for animation */}
+        <style jsx>{`
+          @keyframes fadeZoom {
+            0% {
+              opacity: 0;
+              transform: scale(0.8) translateY(20px);
+            }
+            100% {
+              opacity: 1;
+              transform: scale(1) translateY(0);
+            }
+          }
+          .fade-zoom {
+            animation: fadeZoom 2s ease-out forwards;
+          }
+        `}</style>
+
+        <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-6xl gap-10">
+          {/* Left Side - Text with animation */}
+          <div className="w-full md:w-1/2 text-left fade-zoom">
+            <h1 className="text-5xl font-bold text-purple-300 mb-4">
+              Welcome to Aqseluxe 🛍️
+            </h1>
+            <p className="text-lg text-blue-400">
+              Explore our exclusive collection of stylish products!
+            </p>
+          </div>
+
+          {/* Right Side - Image with animation */}
+          <div className="w-full md:w-1/2 fade-zoom ">
+            <img
+              src="/bg.avif"
+              alt="Slowmo Image"
+              className="mask-x-from-96 h-[400px] object-cover rounded-xl shadow-xl"
+            />
+          </div>
         </div>
       </main>
 
-      <section className="py-12 bg-white">
-        <h2 className="text-2xl font-bold text-center mb-8 text-indigo-700">
+      <section className="py-12 bg-gradient-to-b from-black via-blue-950 to-purple-950">
+        <h2 className="text-2xl font-bold text-center mb-8 text-purple-300">
           Featured Products
         </h2>
         <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4">
           {products.length === 0 ? (
-            <p>Loading products...</p>
+            <p className="text-center text-blue-400">Loading products...</p>
           ) : (
             products.map((product) => (
               <Link key={product.id} href={`/products/${product.id}`}>
-                <div className="bg-indigo-50 p-4 rounded-xl shadow transition cursor-pointer hover:bg-gradient-to-br hover:from-pink-200 hover:to-pink-400 hover:shadow-pink-300 hover:shadow-lg duration-300">
+                <div className="bg-blue-950 p-4 rounded-xl shadow transition cursor-pointer hover:bg-purple-800 hover:shadow-lg hover:shadow-purple-500 duration-300">
                   <img
                     src={product.image}
                     alt={product.title}
-                    className="rounded-md mb-3 h-40 object-contain mx-auto"
+                    className="rounded-md mb-3 h-40 object-contain mx-auto bg-black p-2"
                   />
-                  <h3 className="text-lg font-semibold">{product.title}</h3>
-                  <p className="text-sm text-gray-600">
+                  <h3 className="text-lg font-semibold text-purple-200">
+                    {product.title}
+                  </h3>
+                  <p className="text-sm text-blue-400">
                     {product.category.charAt(0).toUpperCase() +
                       product.category.slice(1)}
                   </p>
-                  <p className="mt-2 font-bold text-indigo-600">
+                  <p className="mt-2 font-bold text-blue-300">
                     ${product.price}
                   </p>
                 </div>

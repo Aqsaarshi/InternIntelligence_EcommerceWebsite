@@ -27,30 +27,35 @@ const ShopPage = () => {
   }, []);
 
   if (loading) {
-    return <p className="text-center mt-10">Loading products...</p>;
+    return (
+      <p className="text-center text-purple-300 mt-10">Loading products...</p>
+    );
   }
 
   return (
     <>
       <Navbar />
-      <section className="py-12 bg-gradient-to-r from-indigo-50 to-pink-100">
-        <h2 className="text-2xl font-bold text-center mb-8 text-indigo-700">
-          Featured Products
+      <section className="py-12 bg-gradient-to-r from-black via-indigo-950 to-purple-950 min-h-screen">
+        <h2 className="text-3xl font-bold text-center mb-10 text-purple-300 tracking-wide">
+          Explore Our Collection
         </h2>
+
         <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4">
           {products.map((product) => (
             <Link key={product.id} href={`/products/${product.id}`}>
-              <div className="bg-indigo-50 p-4 rounded-xl shadow transition cursor-pointer hover:bg-gradient-to-br hover:from-pink-200 hover:to-pink-400 hover:shadow-pink-300 hover:shadow-lg duration-300">
+              <div className="bg-black border border-indigo-900 p-5 rounded-xl shadow-md hover:shadow-purple-700 hover:bg-gradient-to-br hover:from-indigo-900 hover:to-purple-900 transition duration-300 cursor-pointer text-white">
                 <img
                   src={product.image}
                   alt={product.title}
-                  className="rounded-md mb-3 h-40 object-contain mx-auto"
+                  className="rounded-md mb-4 h-40 object-contain mx-auto"
                 />
-                <h3 className="text-lg font-semibold">{product.title}</h3>
-                <p className="text-sm text-gray-600 capitalize">
+                <h3 className="text-lg font-semibold line-clamp-2">
+                  {product.title}
+                </h3>
+                <p className="text-sm text-purple-300 capitalize mt-1">
                   {product.category}
                 </p>
-                <p className="mt-2 font-bold text-indigo-600">
+                <p className="mt-2 font-bold text-purple-400">
                   ${product.price}
                 </p>
               </div>

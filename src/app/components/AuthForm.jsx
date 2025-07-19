@@ -1,13 +1,14 @@
 "use client";
 
 import React, { useState } from "react";
-import { useRouter } from "next/navigation"; // Router import karo
-import { registerUser, loginUser } from "./firebaseAuth";
+import { useRouter } from "next/navigation";
+import { registerUser, loginUser, resetPassword } from "./firebaseAuth";
 
 export default function AuthForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const router = useRouter(); // Router initialize karo
+  const [rememberMe, setRememberMe] = useState(false);
+  const router = useRouter();
 
   const handleRegister = async () => {
     try {
@@ -22,50 +23,97 @@ export default function AuthForm() {
     try {
       const userCredential = await loginUser(email, password);
       alert("User logged in: " + userCredential.user.email);
-      router.push("/home"); // Login success ke baad home page pe redirect karo
+      router.push("/home");
+    } catch (error) {
+      alert("Error: " + error.message);
+    }
+  };
+
+  const handleForgotPassword = async () => {
+    if (!email) {
+      alert("Please enter your email first.");
+      return;
+    }
+
+    try {
+      await resetPassword(email);
+      alert("Password reset link sent to your email.");
     } catch (error) {
       alert("Error: " + error.message);
     }
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100 p-4">
-      <div className="bg-white p-8 rounded-2xl shadow-lg w-full max-w-sm">
-        <h2 className="text-2xl font-bold text-center text-pink-500 mb-6">
-          Welcome 👋
-        </h2>
+    <div className="min-h-screen flex md:flex-row flex-col bg-gradient-to-br from-black via-indigo-950 to-purple-950">
+      {/* Image Section */}
+      <div className="w-full md:w-1/2 flex items-center justify-end p-4 md:p-10">
+        <img
+          src="/pic1.png"
+          alt="Login illustration"
+          className="w-[90%] h-auto object-contain"
+        />
+      </div>
 
-        <div className="mb-4">
+      {/* Form Section */}
+      <div className="w-full md:w-1/2 flex items-center justify-start p-4 md:p-10">
+        <div className="w-full max-w-md bg-gradient-to-br from-black via-indigo-950 to-purple-950 p-8 rounded-2xl shadow-2xl border border-purple-700 text-white">
+          <h2 className="text-3xl font-extrabold text-center text-purple-300 mb-8 tracking-wide">
+            Welcome 👋
+          </h2>
+
           <input
             type="email"
             placeholder="Email"
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 transition"
+            className="w-full mb-4 px-4 py-3 border border-purple-700 rounded-xl bg-black text-white placeholder-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
             onChange={(e) => setEmail(e.target.value)}
           />
-        </div>
 
-        <div className="mb-6">
           <input
             type="password"
             placeholder="Password"
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 transition"
+            className="w-full mb-4 px-4 py-3 border border-purple-700 rounded-xl bg-black text-white placeholder-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
             onChange={(e) => setPassword(e.target.value)}
           />
-        </div>
 
-        <div className="flex flex-col gap-3">
-          <button
-            onClick={handleRegister}
-            className="bg-pink-500 hover:bg-pink-600 text-white font-medium py-2 rounded-lg transition"
-          >
-            Register
-          </button>
-          <button
-            onClick={handleLogin}
-            className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 rounded-lg transition"
-          >
-            Login
-          </button>
+          <div className="flex items-center justify-between text-sm text-purple-300 mb-6">
+            <label className="flex items-center gap-2">
+              <input
+                type="checkbox"
+                checked={rememberMe}
+                onChange={() => setRememberMe(!rememberMe)}
+                className="accent-purple-500"
+              />
+              Remember Me
+            </label>
+
+            <div className="space-x-2">
+              <button
+                onClick={handleForgotPassword}
+                className="hover:underline text-purple-400"
+              >
+                Forgot Password?
+              </button>
+              <span>|</span>
+              <a href="#" className="hover:underline text-purple-400">
+                Sign Up
+              </a>
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-3">
+            <button
+              onClick={handleRegister}
+              className="bg-gradient-to-r from-blue-700 to-purple-700 hover:brightness-110 text-white font-semibold py-2 rounded-xl shadow"
+            >
+              Register
+            </button>
+            <button
+              onClick={handleLogin}
+              className="bg-gradient-to-r from-indigo-600 to-blue-600 hover:brightness-110 text-white font-semibold py-2 rounded-xl shadow"
+            >
+              Login
+            </button>
+          </div>
         </div>
       </div>
     </div>

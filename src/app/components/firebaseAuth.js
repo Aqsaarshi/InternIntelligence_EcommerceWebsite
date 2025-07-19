@@ -2,7 +2,8 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  signOut, // ✅ Add this
+  signOut,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 import app from "./firebase";
 
@@ -17,5 +18,9 @@ export const loginUser = (email, password) => {
 };
 
 export const logoutUser = () => {
-  return signOut(auth); // 🔄 no need to call getAuth() again here
+  return signOut(auth);
+};
+
+export const resetPassword = async (email) => {
+  return sendPasswordResetEmail(auth, email);
 };

@@ -71,7 +71,6 @@ export default function WishlistPage() {
 
   const handlePayment = async (e: React.FormEvent) => {
     e.preventDefault();
-
     const orderData = {
       ...formData,
       items: wishlist,
@@ -110,7 +109,7 @@ export default function WishlistPage() {
 
   if (wishlist.length === 0) {
     return (
-      <div className="text-center mt-20 text-gray-600 text-xl">
+      <div className="min-h-screen bg-gradient-to-br from-black via-blue-950 to-purple-950 text-center flex items-center justify-center text-white text-xl">
         Wishlist is empty.
       </div>
     );
@@ -119,64 +118,65 @@ export default function WishlistPage() {
   return (
     <>
       <Navbar />
-      <div className="max-w-5xl mx-auto p-8">
-        <h1 className="text-3xl font-bold mb-6">My Wishlist</h1>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-          {wishlist.map((product) => (
-            <div
-              key={product.id}
-              className="border rounded-lg p-4 shadow hover:shadow-lg transition"
-            >
-              <img
-                src={product.image}
-                alt={product.title}
-                className="w-full h-48 object-contain mb-4"
-              />
-              <h2 className="font-semibold text-lg mb-2">{product.title}</h2>
-              <p className="text-green-600 font-bold mb-2">
-                ${product.price.toFixed(2)}
-              </p>
-              <div className="flex items-center mb-4 space-x-3">
+      <div className="min-h-screen bg-gradient-to-br from-black via-blue-950 to-purple-950 text-white">
+        <div className="max-w-6xl mx-auto px-6 py-12">
+          <h1 className="text-3xl font-bold mb-8 text-center text-blue-300">
+            My Wishlist 💖
+          </h1>
+
+          {/* Product List */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            {wishlist.map((product) => (
+              <div
+                key={product.id}
+                className="bg-gray-900 rounded-xl p-5 shadow-md border border-blue-900"
+              >
+                <img
+                  src={product.image}
+                  alt={product.title}
+                  className="w-full h-48 object-contain mb-4 bg-white rounded"
+                />
+                <h2 className="font-semibold text-lg text-blue-200 mb-1">
+                  {product.title}
+                </h2>
+                <p className="text-purple-400 font-bold mb-3">
+                  ${product.price.toFixed(2)}
+                </p>
+
+                <div className="flex items-center gap-3 mb-4">
+                  <button
+                    onClick={() => decreaseQuantity(product.id)}
+                    className="bg-blue-700 text-white px-3 py-1 rounded hover:bg-blue-500"
+                  >
+                    −
+                  </button>
+                  <span className="font-semibold">{product.quantity}</span>
+                  <button
+                    onClick={() => increaseQuantity(product.id)}
+                    className="bg-blue-700 text-white px-3 py-1 rounded hover:bg-blue-500"
+                  >
+                    +
+                  </button>
+                </div>
+
                 <button
-                  onClick={() => decreaseQuantity(product.id)}
-                  className="px-3 py-1 bg-gray-200 rounded"
+                  onClick={() => removeFromWishlist(product.id)}
+                  className="w-full bg-red-700 text-white py-2 rounded hover:bg-red-600 transition"
                 >
-                  -
-                </button>
-                <span className="font-medium">{product.quantity}</span>
-                <button
-                  onClick={() => increaseQuantity(product.id)}
-                  className="px-3 py-1 bg-gray-200 rounded"
-                >
-                  +
+                  Remove
                 </button>
               </div>
-              <button
-                onClick={() => removeFromWishlist(product.id)}
-                className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition"
-              >
-                Remove
-              </button>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        {/* Payment Form */}
-        <div className="border-t pt-8">
-          <h2 className="text-2xl font-semibold mb-4">Payment Information</h2>
-          <p className="mb-4 text-gray-600">
-            Total Amount:{" "}
-            <span className="text-green-600 font-bold">
-              ${totalAmount.toFixed(2)}
-            </span>
-          </p>
-          <div className="border-t pt-8">
-            <h2 className="text-2xl font-semibold mb-4 text-pink-700">
+          {/* Payment Form */}
+          <div className="bg-gray-900 p-8 rounded-xl border border-purple-800">
+            <h2 className="text-2xl font-semibold mb-4 text-purple-300">
               Payment & Shipping Details
             </h2>
-            <p className="mb-4 text-gray-600">
+            <p className="mb-6 text-blue-200">
               Total Amount:{" "}
-              <span className="text-green-600 font-bold">
+              <span className="text-green-400 font-bold">
                 ${totalAmount.toFixed(2)}
               </span>
             </p>
@@ -191,63 +191,57 @@ export default function WishlistPage() {
                 placeholder="Full Name"
                 value={formData.name}
                 onChange={handleInputChange}
-                className="border p-2 rounded"
+                className="bg-black text-white border border-blue-800 p-3 rounded placeholder:text-blue-400"
                 required
               />
-
               <input
                 type="email"
                 name="email"
                 placeholder="Email Address"
                 value={formData.email}
                 onChange={handleInputChange}
-                className="border p-2 rounded"
+                className="bg-black text-white border border-blue-800 p-3 rounded placeholder:text-blue-400"
                 required
               />
-
               <input
                 type="text"
                 name="phone"
                 placeholder="Phone Number"
-                value={formData.phone || ""}
+                value={formData.phone}
                 onChange={handleInputChange}
-                className="border p-2 rounded"
+                className="bg-black text-white border border-blue-800 p-3 rounded placeholder:text-blue-400"
                 required
               />
-
               <input
                 type="text"
                 name="city"
                 placeholder="City"
-                value={formData.city || ""}
+                value={formData.city}
                 onChange={handleInputChange}
-                className="border p-2 rounded"
+                className="bg-black text-white border border-blue-800 p-3 rounded placeholder:text-blue-400"
                 required
               />
-
               <textarea
                 name="address"
                 placeholder="Full Shipping Address"
                 value={formData.address}
                 onChange={handleInputChange}
-                className="border p-2 rounded col-span-2"
+                className="bg-black text-white border border-blue-800 p-3 rounded col-span-2 placeholder:text-blue-400"
                 rows={3}
                 required
               />
-
               <input
                 type="text"
                 name="card"
                 placeholder="Card Number or Payment Ref"
                 value={formData.card}
                 onChange={handleInputChange}
-                className="border p-2 rounded col-span-2"
+                className="bg-black text-white border border-blue-800 p-3 rounded col-span-2 placeholder:text-blue-400"
                 required
               />
-
               <button
                 type="submit"
-                className="bg-pink-600 text-white py-2 rounded hover:bg-pink-700 transition col-span-2"
+                className="bg-gradient-to-r from-purple-800 via-blue-700 to-indigo-800 text-white py-3 rounded col-span-2 hover:brightness-110 transition"
               >
                 Pay & Place Order
               </button>

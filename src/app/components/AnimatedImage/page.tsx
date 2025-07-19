@@ -36,20 +36,20 @@ export default function AnimatedImage({
     <div
       ref={ref}
       className="
-    relative flex flex-col justify-center items-center px-16 py-8 sm:px-24 sm:py-12 rounded-3xl
-    max-w-xl mx-auto overflow-hidden
-    bg-gradient-to-tr from-pink-100 via-white to-yellow-50
-    shadow-lg
-    before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_top_left,_rgba(255,182,193,0.3),_transparent_60%)]
-    before:pointer-events-none before:rounded-3xl
-    after:absolute after:inset-0 after:bg-[radial-gradient(circle_at_bottom_right,_rgba(255,240,245,0.3),_transparent_70%)]
-    after:pointer-events-none after:rounded-3xl 
-  "
+      relative flex flex-col justify-center items-center px-6 sm:px-12 py-10 sm:py-16 rounded-3xl
+      max-w-xl mx-auto overflow-hidden
+      bg-gradient-to-tr from-black via-blue-950 to-purple-950
+      shadow-lg
+      before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_top_left,_rgba(75,0,130,0.2),_transparent_60%)]
+      before:pointer-events-none before:rounded-3xl
+      after:absolute after:inset-0 after:bg-[radial-gradient(circle_at_bottom_right,_rgba(123,104,238,0.2),_transparent_70%)]
+      after:pointer-events-none after:rounded-3xl
+    "
     >
-      {/* Glowing Border Animation */}
-      <div className="absolute inset-0 rounded-3xl border-2 border-transparent group-hover:border-pink-300 transition-all duration-500 animate-[pulseGlow_2.5s_ease-in-out_infinite] z-0" />
+      {/* Glowing border effect */}
+      <div className="absolute inset-0 rounded-3xl border-2 border-transparent group-hover:border-purple-400 transition-all duration-500 animate-[pulseGlow_2.5s_ease-in-out_infinite] z-0" />
 
-      {/* Image with slow reveal */}
+      {/* Animated product image */}
       <img
         src={src}
         alt={alt}
@@ -65,18 +65,18 @@ export default function AnimatedImage({
         `}
       />
 
-      {/* Headline animated */}
+      {/* Tagline */}
       <h2
-        className={`relative z-20 mt-6 text-2xl sm:text-3xl font-serif text-[#7a2e47] opacity-0 transform translate-y-4 transition-all duration-[1500ms] ease-out ${
+        className={`relative z-20 mt-6 text-2xl sm:text-3xl font-serif text-purple-300 opacity-0 transform translate-y-4 transition-all duration-[1500ms] ease-out ${
           inView ? "opacity-100 translate-y-0" : ""
         }`}
       >
         {tagline}
       </h2>
 
-      {/* Discount/Offer text animated */}
+      {/* Discount Text */}
       <p
-        className={`relative z-20 mt-2 text-sm sm:text-base text-[#a03a60] font-medium opacity-0 transform translate-y-6 transition-all duration-[2000ms] ease-out delay-300 ${
+        className={`relative z-20 mt-2 text-sm sm:text-base text-blue-300 font-medium opacity-0 transform translate-y-6 transition-all duration-[2000ms] ease-out delay-300 ${
           inView ? "opacity-100 translate-y-0" : ""
         }`}
       >

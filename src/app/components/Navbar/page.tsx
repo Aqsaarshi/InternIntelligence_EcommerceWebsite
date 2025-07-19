@@ -24,14 +24,14 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-gradient-to-r from-indigo-300 via-purple-300 to-pink-300 shadow-md">
+    <nav className="bg-gradient-to-r from-black via-blue-900 to-purple-900 shadow-md">
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
         {/* Logo */}
-        <div className="text-2xl font-bold text-black">🛍️ Aqsora</div>
+        <div className="text-2xl font-bold text-blue-300">🛍️ Aqseluxe</div>
 
-        {/* Hamburger Button (only shown on small screens) */}
+        {/* Hamburger Button */}
         <button
-          className="md:hidden text-3xl text-black"
+          className="md:hidden text-3xl text-blue-200"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           ☰
@@ -41,12 +41,12 @@ export default function Navbar() {
         <ul
           className={`${
             isMenuOpen ? "block" : "hidden"
-          } md:flex gap-6 text-gray-700 font-medium items-center absolute md:static top-16 left-0 w-full md:w-auto bg-white md:bg-transparent px-6 md:px-0 py-4 md:py-0 rounded-b-xl shadow-md md:shadow-none z-50`}
+          } md:flex gap-6 font-medium items-center absolute md:static top-16 left-0 w-full md:w-auto bg-black md:bg-transparent px-6 md:px-0 py-4 md:py-0 rounded-b-xl shadow-md md:shadow-none z-50`}
         >
           <li>
             <Link
               href="/home"
-              className="block md:inline-block text-gray-700 hover:text-pink-600 transition-colors"
+              className="block md:inline-block text-blue-200 hover:text-purple-400 transition"
             >
               Home
             </Link>
@@ -54,7 +54,7 @@ export default function Navbar() {
           <li>
             <Link
               href="/shop"
-              className="block md:inline-block hover:text-pink-600 transition-colors"
+              className="block md:inline-block text-blue-200 hover:text-purple-400 transition"
             >
               Shop
             </Link>
@@ -62,7 +62,7 @@ export default function Navbar() {
           <li>
             <Link
               href="/contact"
-              className="block md:inline-block hover:text-pink-600 transition-colors"
+              className="block md:inline-block text-blue-200 hover:text-purple-400 transition"
             >
               Contact
             </Link>
@@ -70,7 +70,7 @@ export default function Navbar() {
           <li>
             <Link
               href="/help"
-              className="block md:inline-block hover:text-pink-600 transition-colors"
+              className="block md:inline-block text-blue-200 hover:text-purple-400 transition"
             >
               Help
             </Link>
@@ -79,15 +79,15 @@ export default function Navbar() {
           {user ? (
             <li className="relative group cursor-pointer">
               <div className="flex items-center gap-2 py-2 md:py-0">
-                <div className="w-8 h-8 bg-indigo-500 text-white flex items-center justify-center rounded-full text-sm">
+                <div className="w-8 h-8 bg-purple-700 text-white flex items-center justify-center rounded-full text-sm">
                   {user?.email?.[0]?.toUpperCase()}
                 </div>
-                <span className="text-sm text-gray-700">{user?.email}</span>
+                <span className="text-sm text-blue-200">{user?.email}</span>
               </div>
-              <div className="absolute right-0 mt-2 w-32 bg-white shadow-lg rounded-md opacity-0 group-hover:opacity-100 transition-all duration-300 z-10">
+              <div className="absolute right-0 mt-2 w-32 bg-gray-900 text-blue-200 shadow-lg rounded-md opacity-0 group-hover:opacity-100 transition-all duration-300 z-10">
                 <button
                   onClick={handleLogout}
-                  className="w-full px-4 py-2 text-left text-sm hover:bg-gray-100"
+                  className="w-full px-4 py-2 text-left text-sm hover:bg-gray-700"
                 >
                   Logout
                 </button>
@@ -97,7 +97,7 @@ export default function Navbar() {
             <li>
               <Link
                 href="/"
-                className="block md:inline-block hover:text-indigo-600 transition"
+                className="block md:inline-block text-blue-200 hover:text-purple-400 transition"
               >
                 Login
               </Link>
